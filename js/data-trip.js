@@ -53,7 +53,7 @@ const RETURN_TRIP = deepFreeze({
 
 const CHANGES = deepFreeze([
   {title:"Venice Beach → Day 2 morning",body:"It is 0.4 mi from the Canals. The boardwalk is great at 9 AM and not worth it after dark."},
-  {title:"Santa Monica after the 6:30 pickup",body:"The pier is right by LAX, so it is the easy first stop with Rachana & Omkar. At night you get the lit Ferris wheel and a beach dinner."},
+  {title:"Santa Monica after the 6:30 pickup",body:"The pier is right by LAX, so it is the easy first stop after the pickup. At night you get the lit Ferris wheel and a beach dinner."},
   {title:"Day 2 reordered by geography",body:"Venice → Downtown → Beverly Hills → Griffith → Hollywood → dinner. No backtracking across LA."},
   {title:"Hollywood Sign + Griffith = one stop",body:"The observatory terraces have a clear sign view at sunset, which saves a separate 45-min detour."},
   {title:"Dolby & Chinese Theatre → Day 2",body:"Same block as the Walk of Fame. On the 17th you are 2+ hours away in San Diego."},
@@ -77,7 +77,7 @@ const TIPS = deepFreeze([
 const CHECKLIST = deepFreeze([
   {id:"universal-tickets",text:"Universal tickets for Sat Nov 14 (consider Express on a Saturday)"},
   {id:"broad-reservation",text:"The Broad: free timed reservation, Sun Nov 15 at 11 AM, for everyone"},
-  {id:"din-tai-fung",text:"Din Tai Fung Century City, Sun Nov 15 at 7 PM: confirm the headcount including Omkar & Rachana"},
+  {id:"din-tai-fung",text:"Din Tai Fung Century City, Sun Nov 15 at 7 PM: confirm the headcount for the full group"},
   {id:"lawndale-checkin",text:"Lawndale Airbnb: confirm check-in after 9 PM on Nov 13 and the checkout time on Nov 15"},
   {id:"pb-checkin",text:"Pacific Beach Airbnb: confirm self check-in around 11 PM on Sun Nov 15"},
   {id:"return-date",text:"Decide the return date and time to LA (book a place in LA if you go back on the night of the 17th)"},
