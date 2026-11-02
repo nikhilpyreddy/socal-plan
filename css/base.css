@@ -1,0 +1,61 @@
+/* Tokens, reset, type, focus, reduced motion. Palette: coastal sunset. LA = rose, San Diego = teal. */
+:root{
+  --bg:#f6f1e8;--bg-wash:#fadfc6;--surface:#fffdf9;--surface-2:#f0e8d9;--ink:#1b2233;--muted:#596074;
+  --line:#e2d9c8;--line-strong:#c9bca3;--link:#0f6b80;--eyebrow:#a3304f;
+  --la:#a3304f;--sd:#0f6b80;--rg:var(--sd);
+  --c-explore:#0f6b80;--c-explore-fg:#fff;--c-food:#e3a02b;--c-food-fg:#1b2233;
+  --c-view:#b9501a;--c-view-fg:#fff;--c-logi:#6b7280;--c-logi-fg:#fff;--travel:#c9c1b3;
+  --btn-bg:#0f5f73;--btn-fg:#fff;--btn-hover:#0b4d5e;
+  --b-booked-bg:#1f6b43;--b-booked-fg:#fff;--b-new-bg:#0f6b80;--b-new-fg:#fff;
+  --b-moved-bg:#f1c26a;--b-moved-fg:#1b2233;--b-sunset-bg:#b9501a;--b-sunset-fg:#fff;
+  --ok:#1f6b43;--warn:#9a3d12;--err-bg:#fde8e4;--err-fg:#7a1c0c;
+  --shadow:0 1px 2px rgba(27,34,51,.05),0 6px 20px rgba(27,34,51,.06);
+  --shadow-lg:0 2px 4px rgba(27,34,51,.06),0 14px 36px rgba(27,34,51,.10);
+  --font-display:Fraunces,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --font-body:Manrope,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:72px;
+  --r1:8px;--r2:14px;--r3:22px;--gutter:16px;--tap:44px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f131b;--bg-wash:#2a1d33;--surface:#171d28;--surface-2:#1f2633;--ink:#eee9df;--muted:#a0a8b6;
+  --line:#2b3342;--line-strong:#3d485c;--link:#6cc6da;--eyebrow:#f08aa5;--la:#f08aa5;--sd:#4fb3c8;
+  --c-explore:#4fb3c8;--c-explore-fg:#07181d;--c-food:#f0b04d;--c-food-fg:#1b1608;
+  --c-view:#f2955a;--c-view-fg:#1f0d03;--c-logi:#8a90a0;--c-logi-fg:#0f131a;--travel:#3a4250;
+  --btn-bg:#4fb3c8;--btn-fg:#07181d;--btn-hover:#6cc6da;
+  --b-booked-bg:#5fbf86;--b-booked-fg:#08140d;--b-new-bg:#4fb3c8;--b-new-fg:#07181d;
+  --b-moved-bg:#f0b04d;--b-moved-fg:#1b1608;--b-sunset-bg:#f2955a;--b-sunset-fg:#1f0d03;
+  --ok:#5fbf86;--warn:#f2955a;--err-bg:#3a1a14;--err-fg:#ffd2c8;--shadow:none;--shadow-lg:none;color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0f131b;--bg-wash:#2a1d33;--surface:#171d28;--surface-2:#1f2633;--ink:#eee9df;--muted:#a0a8b6;
+  --line:#2b3342;--line-strong:#3d485c;--link:#6cc6da;--eyebrow:#f08aa5;--la:#f08aa5;--sd:#4fb3c8;
+  --c-explore:#4fb3c8;--c-explore-fg:#07181d;--c-food:#f0b04d;--c-food-fg:#1b1608;
+  --c-view:#f2955a;--c-view-fg:#1f0d03;--c-logi:#8a90a0;--c-logi-fg:#0f131a;--travel:#3a4250;
+  --btn-bg:#4fb3c8;--btn-fg:#07181d;--btn-hover:#6cc6da;
+  --b-booked-bg:#5fbf86;--b-booked-fg:#08140d;--b-new-bg:#4fb3c8;--b-new-fg:#07181d;
+  --b-moved-bg:#f0b04d;--b-moved-fg:#1b1608;--b-sunset-bg:#f2955a;--b-sunset-fg:#1f0d03;
+  --ok:#5fbf86;--warn:#f2955a;--err-bg:#3a1a14;--err-fg:#ffd2c8;--shadow:none;--shadow-lg:none;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-wrap:break-word}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.12;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(1.75rem,1.4rem + 1.6vw,2.4rem)}
+h3{font-size:1.0625rem}
+p{margin:0}
+a{color:var(--link);text-underline-offset:3px}
+ul,ol{margin:0;padding:0}
+button{font:inherit;color:inherit}
+em{font-style:italic}
+.ico{width:1.1em;height:1.1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+.ico.f{fill:currentColor;stroke:none}
+:focus-visible{outline:3px solid var(--link);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:var(--s4);top:-100px;z-index:100;background:var(--ink);color:var(--bg);padding:var(--s3) var(--s4);border-radius:var(--r1)}
+.skip:focus{top:var(--s2)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+@media (min-width:640px){:root{--gutter:24px}}

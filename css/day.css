@@ -1,0 +1,79 @@
+/* Day sections: header, time bar, timeline, legs, boxes. Bar selectors are scoped under .bar so they can never match badges. */
+.day-head{position:relative}
+.day-num{position:absolute;right:0;top:-.15em;font:700 clamp(5rem,16vw,9rem)/1 var(--font-display);color:var(--rg);opacity:.14;pointer-events:none;letter-spacing:-.04em}
+.day-kick{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rg);margin-bottom:var(--s3);display:flex;flex-wrap:wrap;align-items:center}
+.today-flag{display:none;margin-left:var(--s3);padding:3px 10px;border-radius:999px;background:var(--btn-bg);color:var(--btn-fg);letter-spacing:.06em}
+.day[data-today] .today-flag{display:inline-block}
+.day-head h2{font-size:clamp(2rem,1.5rem + 2.4vw,3.25rem);max-width:16ch;position:relative}
+.day-head h2::before{display:none}
+.lede{margin-top:var(--s3);color:var(--muted);max-width:62ch;font-size:1.0625rem}
+.day.sec>.day-head+.bar{margin-top:var(--s6)}
+.day.sec{padding-top:var(--s7);margin-top:var(--s7);border-top:1px solid var(--line)}
+.day.sec::before{display:none}
+
+/* time bar */
+.bar{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:var(--s4) var(--s4) var(--s3);box-shadow:var(--shadow)}
+.bar .track{position:relative;height:34px;border-radius:var(--r1);background:var(--surface-2);overflow:hidden}
+.bar .seg{position:absolute;top:0;bottom:0;border-right:2px solid var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bar .seg b{font-size:.75rem;font-weight:800;font-variant-numeric:tabular-nums}
+.bar .seg:not(.travel){container-type:inline-size}
+@container (max-width:22px){.bar .seg b{display:none}}
+.bar .seg.g-explore{color:var(--c-explore-fg)}.bar .seg.g-food{color:var(--c-food-fg)}.bar .seg.g-view{color:var(--c-view-fg)}.bar .seg.g-logi{color:var(--c-logi-fg)}
+.bar .sunline{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);box-shadow:0 0 0 1px var(--surface)}
+.bar .ticks{position:relative;height:22px;margin-top:6px;font-size:.6875rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar .ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.bar .ticks .edge{top:0}.bar .ticks .edge.l{left:0;transform:none}.bar .ticks .edge.r{right:0;left:auto;transform:none}
+.bar .ticks .off{visibility:hidden}
+.bar .ticks .sun{color:var(--ink);font-weight:800;display:inline-flex;align-items:center;gap:3px}
+
+/* timeline */
+.day-body{margin-top:var(--s5)}
+.tl{list-style:none}
+.stop,.leg{display:block}
+.time{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 var(--s2);padding:var(--s4) 0 var(--s2)}
+.time{font-variant-numeric:tabular-nums;line-height:1.25}
+.time b{font-size:1rem}
+.time small{font-size:.6875rem;font-weight:700;margin-left:2px;color:var(--muted)}
+.time>span{font-size:.8125rem;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c-explore);border-radius:var(--r2);padding:var(--s4);box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s var(--ease)}
+.card:hover{box-shadow:var(--shadow-lg)}
+.stop.g-food .card{border-left-color:var(--c-food)}.stop.g-view .card{border-left-color:var(--c-view)}.stop.g-logi .card{border-left-color:var(--c-logi)}
+.card-top{display:flex;gap:var(--s3);align-items:flex-start}
+.card h3{font-family:var(--font-body);font-size:1.0625rem;font-weight:800;line-height:1.3;padding-top:2px}
+.num{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800;background:var(--c-explore);color:var(--c-explore-fg)}
+.stop.g-food .num{background:var(--c-food);color:var(--c-food-fg)}.stop.g-view .num{background:var(--c-view);color:var(--c-view-fg)}.stop.g-logi .num{background:var(--c-logi);color:var(--c-logi-fg)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);margin-top:var(--s2);font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.desc{margin-top:var(--s3);font-size:.9375rem;color:var(--muted)}
+.card .tips{margin-top:var(--s3);padding-left:var(--s5);font-size:.9375rem}
+.card .tips li{margin:var(--s1) 0;padding-left:2px}
+.card .tips li::marker{color:var(--line-strong)}
+.maps{display:inline-flex;align-items:center;gap:6px;min-height:var(--tap);margin-top:var(--s2);font-size:.875rem;font-weight:700}
+
+/* legs */
+.leg{list-style:none;font-size:.8125rem;color:var(--muted)}
+.leg-rail{display:none}
+.leg-body{margin-left:12px;border-left:2px dashed var(--line-strong);padding:var(--s3) 0 var(--s3) var(--s5);display:flex;flex-wrap:wrap;gap:2px var(--s3);align-items:center}
+.leg-time{display:inline-flex;align-items:center;gap:6px}
+.leg-time b{color:var(--ink)}
+.leg-time>span::before{content:"· "}
+.leg-note{flex:1 1 220px}
+
+/* boxes */
+.day-side{display:grid;gap:var(--s3);margin-top:var(--s5);align-content:start}
+.box{border-radius:var(--r2);padding:var(--s4) var(--s5);font-size:.9375rem;border:1px solid var(--line);background:var(--surface)}
+.box h3{font-family:var(--font-body);font-size:.9375rem;font-weight:800;margin-bottom:var(--s2)}
+.box ul{padding-left:var(--s5)}.box li{margin:var(--s1) 0}
+.box.warn{border-color:color-mix(in srgb,var(--warn) 55%,var(--line));background:color-mix(in srgb,var(--warn) 6%,var(--surface))}
+.box.warn h3{color:var(--warn)}
+.box.info{border-left:4px solid var(--rg)}
+
+@media (min-width:640px){.stop,.leg{display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:var(--s4)}.leg-rail{display:block}.time{display:block;text-align:right;padding:var(--s4) 0 0}.time>span{display:block;font-size:.75rem}.time b{font-size:.9375rem}.card{padding:var(--s4) var(--s5)}.leg-body{margin-left:20px}}
+@media (min-width:1024px){
+  .day-head{padding-right:140px}
+  .bar .track{height:44px}.bar .seg b{font-size:.875rem}
+  .bar{padding:var(--s5) var(--s5) var(--s4)}
+}
+@media (min-width:1280px){
+  .day-body{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:var(--s6);align-items:start}
+  .day-side{position:sticky;top:var(--s6);margin-top:0}
+}

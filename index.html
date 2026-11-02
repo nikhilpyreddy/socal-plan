@@ -4,585 +4,78 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SoCal Road Trip</title>
-<meta name="description" content="Los Angeles and San Diego itinerary, Nov 14–17: timed stops, drive times, sunset plans and booking checklist.">
+<meta name="description" content="Los Angeles and San Diego itinerary, Nov 13–17: timed stops, drive times, sunset plans and booking checklist.">
+<meta name="theme-color" content="#f6f1e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f131b" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('socal-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#f7f3ec;--surface:#fffdf9;--ink:#1c2230;--muted:#5d6577;--line:#e4ddd0;
-  --accent:#c94f33;--sea:#1d6f84;--sun:#d98a1c;--sand:#efe5d3;--logi:#8a8f9c;--ok:#2f7d4f;
-  --travel:#c9c1b3;--shadow:0 1px 2px rgba(28,34,48,.06),0 4px 16px rgba(28,34,48,.05);
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#11151c;--surface:#181e28;--ink:#ece7de;--muted:#9aa3b2;--line:#2a3240;
-  --accent:#ef7a5c;--sea:#4fb3c8;--sun:#f0b04d;--sand:#232a35;--logi:#7d8494;--ok:#5fbf86;
-  --travel:#3a4250;--shadow:none;color-scheme:dark;
-}}
-:root[data-theme="dark"]{
-  --bg:#11151c;--surface:#181e28;--ink:#ece7de;--muted:#9aa3b2;--line:#2a3240;
-  --accent:#ef7a5c;--sea:#4fb3c8;--sun:#f0b04d;--sand:#232a35;--logi:#7d8494;--ok:#5fbf86;
-  --travel:#3a4250;--shadow:none;color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:64px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--sea)}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.15;margin:0}
-.wrap{max-width:920px;margin:0 auto;padding:0 16px}
-/* nav */
-nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
-nav a{flex:none;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px}
-nav a:hover,nav a.on{background:var(--ink);color:var(--bg)}
-nav button{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer}
-/* hero */
-header{padding:48px 0 28px}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-header h1{font-size:clamp(36px,7vw,60px);margin:8px 0 12px}
-header p{color:var(--muted);max-width:620px;margin:0}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:24px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
-.stat b{display:block;font-family:Fraunces,serif;font-size:24px}
-.stat span{font-size:13px;color:var(--muted)}
-section{padding:28px 0}
-section>h2{font-size:28px;margin-bottom:6px}
-.sub{color:var(--muted);margin:0 0 18px}
-/* overview */
-.ov{display:grid;gap:10px}
-.ov a{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
-.ov a:hover{border-color:var(--sea)}
-.ov .d{font-weight:700;font-size:14px}.ov .d small{display:block;color:var(--muted);font-weight:500}
-.ov .t{font-weight:600}
-.drivebar{height:8px;border-radius:4px;background:var(--sand);margin-top:6px;position:relative;overflow:hidden}
-.drivebar i{position:absolute;inset:0 auto 0 0;border-radius:4px}
-.drivebar i.lo{background:var(--sea)}.drivebar i.hi{background:color-mix(in srgb,var(--sea) 35%,transparent)}
-.ov .m{font-size:13px;color:var(--muted)}
-.changes{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.chg{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:12px 14px;font-size:14px}
-.chg b{display:block;margin-bottom:2px;font-size:15px}
-/* day */
-.day{border-top:1px solid var(--line)}
-.dayhead{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between}
-.dayhead h2{font-size:30px}
-.dayhead .when{font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.04em;text-transform:uppercase}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
-.chip{font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted)}
-.chip b{color:var(--ink)}
-.routebtn{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;text-decoration:none;background:var(--sea);color:#fff;border-radius:999px;padding:8px 14px;margin-top:10px}
-/* time bar */
-.bar{margin:20px 0 6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 14px 10px}
-.track{position:relative;height:26px;border-radius:6px;background:var(--sand);overflow:hidden}
-.seg{position:absolute;top:0;bottom:0;border-right:1px solid var(--surface)}
-.seg.travel{background:repeating-linear-gradient(135deg,var(--travel) 0 4px,transparent 4px 8px)}
-.t-park,.t-culture,.t-walk{background:var(--sea)}.t-food{background:var(--sun)}.t-view{background:var(--accent)}.t-logistics{background:var(--logi)}
-.sunset{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
-.ticks{position:relative;height:18px;font-size:11px;color:var(--muted);margin-top:4px}
-.ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap}
-.ticks span.sun{color:var(--ink);font-weight:700;top:0}
-.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);margin-top:6px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
-/* timeline */
-.tl{list-style:none;margin:18px 0 0;padding:0}
-.stop{display:grid;grid-template-columns:78px 1fr;gap:14px}
-.time{font-weight:700;font-size:14px;text-align:right;padding-top:14px}
-.time span{display:block;font-weight:500;color:var(--muted);font-size:12px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);border-left:4px solid var(--sea)}
-.stop.t-food .card{border-left-color:var(--sun)}.stop.t-view .card{border-left-color:var(--accent)}.stop.t-logistics .card{border-left-color:var(--logi)}
-.stop{background:none}
-.card h3{font-family:Manrope,sans-serif;font-size:17px;font-weight:700;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.card p{margin:6px 0 0;color:var(--muted);font-size:14px}
-.card ul{margin:8px 0 0;padding-left:18px;font-size:14px}
-.card li{margin:3px 0}
-.card .maps{display:inline-block;margin-top:8px;font-size:13px;font-weight:600}
-.badge{font-family:Manrope,sans-serif;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-radius:4px;padding:2px 6px;background:var(--sand);color:var(--muted)}
-.badge.booked{background:var(--ok);color:#fff}.badge.new{background:var(--sea);color:#fff}.badge.moved{background:var(--sun);color:#1c2230}.badge.sunset{background:var(--accent);color:#fff}
-.leg{display:grid;grid-template-columns:78px 1fr;gap:14px;font-size:13px;color:var(--muted)}
-.leg>div:last-child{border-left:2px dashed var(--travel);margin-left:18px;padding:10px 0 10px 18px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
-.leg b{color:var(--ink)}
-.leg svg{width:16px;height:16px;vertical-align:-3px;margin-right:4px;fill:currentColor}
-.box{margin-top:18px;border-radius:12px;padding:14px 16px;font-size:14px;border:1px solid var(--line);background:var(--surface)}
-.box h3{font-family:Manrope,sans-serif;font-size:15px;margin-bottom:4px}
-.box ul{margin:4px 0 0;padding-left:18px}
-.box.warn{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
-.box.warn h3{color:var(--accent)}
-/* tips + checklist */
-.grid2{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.tip{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px}
-.tip b{display:block;font-size:15px;margin-bottom:3px}
-.check{list-style:none;padding:0;margin:0;display:grid;gap:8px}
-.check label{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:15px}
-.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--ok);flex:none}
-.check input:checked+span{text-decoration:line-through;color:var(--muted)}
-footer{padding:32px 0 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
-@media (max-width:560px){
-  .stop,.leg{grid-template-columns:58px 1fr;gap:10px}
-  .time{font-size:13px}
-  .ov a{grid-template-columns:70px 1fr}
-  .leg>div:last-child{margin-left:10px;padding-left:14px}
-}
-@media print{nav,.routebtn,.maps,#theme{display:none}.card,.box,.stat{box-shadow:none}section{break-inside:avoid-page}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/day.css">
+<script defer src="js/util.js"></script>
+<script defer src="js/icons.js"></script>
+<script defer src="js/data-trip.js"></script>
+<script defer src="js/data-days.js"></script>
+<script defer src="js/render-day.js"></script>
+<script defer src="js/render-sections.js"></script>
+<script defer src="js/render-nav.js"></script>
+<script defer src="js/app.js"></script>
 </head>
 <body>
-<nav><div class="wrap" id="nav"></div></nav>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar" id="topbar"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar" aria-label="Trip navigation"></aside>
+  <main class="content" id="main">
+    <header class="hero">
+      <p class="eyebrow">Nov 13 – 17 · Los Angeles → San Diego</p>
+      <h1>SoCal <em>Road Trip</em></h1>
+      <p class="hero-lede">Arrive Friday night, then four full days in two cities, built around the ~4:50 PM sunset. Stops are ordered by geography so you never backtrack, every drive is shown with a realistic traffic range, and each day says what to cut if you fall behind.</p>
+      <div class="stats" id="stats"></div>
+      <noscript><p class="noscript">This itinerary is built with JavaScript. Please turn it on to see the plan.</p></noscript>
+    </header>
 
-<div class="wrap">
-  <header>
-    <div class="eyebrow">Nov 13 – 17 · Los Angeles → San Diego</div>
-    <h1>SoCal Road Trip</h1>
-    <p>Arrive Friday night, then four full days in two cities, built around the ~4:50 PM sunset. Stops are ordered by geography so you never backtrack, every drive is shown with a realistic traffic range, and each day says what to cut if you fall behind.</p>
-    <div class="stats" id="stats"></div>
-  </header>
+    <section class="sec" id="stays">
+      <h2>Where you're staying</h2>
+      <p class="sub">Two bases: near LAX for Los Angeles, and Pacific Beach for San Diego.</p>
+      <div class="stays" id="stays-list"></div>
+    </section>
 
-  <section id="stays">
-    <h2>Where you're staying</h2>
-    <p class="sub">Two bases: near LAX for Los Angeles, and Pacific Beach for San Diego.</p>
-    <div class="grid2">
-      <div class="tip"><b>Los Angeles · Lawndale</b>
-        Fri Nov 13 to Sun Nov 15 (2 nights).<br>4432 153rd St, Unit 204, Lawndale, CA<br>
-        <a href="https://booking.ownerrez.com/18ea66307bbc4ca98220dc7431e04250" target="_blank" rel="noopener">Booking ↗</a> ·
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=4432%20153rd%20St%2C%20Lawndale%2C%20CA" target="_blank" rel="noopener">Map ↗</a>
-        <p class="sub" style="margin:8px 0 0;font-size:13px">About 15–20 min from LAX, 25–35 min from Santa Monica, 40–55 min from Universal. You check out Sunday morning, so the luggage rides in the car all day.</p>
-      </div>
-      <div class="tip"><b>San Diego · Pacific Beach</b>
-        Sun Nov 15 (late check-in) until you head back to LA.<br>Near Pacific Beach, about a 12-minute walk to Crystal Pier.<br>
-        <a href="https://www.airbnb.com/l/xbt72vAp?s=67&amp;unique_share_id=e6c470d1-4a7c-46c9-b403-13095bc5b9ec" target="_blank" rel="noopener">Airbnb ↗</a> ·
-        <a href="https://maps.app.goo.gl/7ZGNaq2JdUnGEr1Y7" target="_blank" rel="noopener">Map ↗</a>
-        <p class="sub" style="margin:8px 0 0;font-size:13px">About 20–25 min to La Jolla and Annie's Canyon, 15–20 min to downtown, Old Town and Sunset Cliffs. The Pacific Beach evening on Nov 16 is a walk from the door.</p>
-      </div>
-    </div>
-  </section>
+    <section class="sec" id="changes">
+      <h2>What I changed, and why</h2>
+      <p class="sub">Your list was strong. These changes mostly fix geography and timing around daylight.</p>
+      <details class="fold">
+        <summary id="chg-count">Show all changes</summary>
+        <div class="grid2 notes changes" id="chg"></div>
+      </details>
+    </section>
 
-  <section id="overview">
-    <h2>At a glance</h2>
-    <p class="sub">Bars show driving per day: solid is the light-traffic time, faded is the heavy-traffic time.</p>
-    <div class="ov" id="ov"></div>
-  </section>
+    <div id="legend"></div>
+    <div id="days"></div>
 
-  <section id="changes">
-    <h2>What I changed, and why</h2>
-    <p class="sub">Your list was strong. These changes mostly fix geography and timing around daylight.</p>
-    <div class="changes" id="chg"></div>
-  </section>
+    <section class="sec day" id="return" data-region="transit"></section>
 
-  <div id="days"></div>
+    <section class="sec" id="tips">
+      <h2>Good to know</h2>
+      <p class="sub">Things that matter on this route in mid-November.</p>
+      <div class="grid2 notes" id="tipgrid"></div>
+    </section>
 
-  <section id="return" class="day">
-    <div class="dayhead"><div><div class="when">Return · Date not set yet</div><h2>San Diego → Los Angeles</h2></div></div>
-    <p class="sub" style="margin-top:8px">About 115 mi from the Pacific Beach Airbnb to LAX. It takes about 1h 50m with clear roads and 3h+ at rush hour. Since the date is open, pick a departure window that avoids the worst traffic.</p>
-    <div class="chips">
-      <span class="chip">🚗 <b>1h 50m–3h+</b> · 115 mi</span>
-      <span class="chip">🛣 <b>I-5 N → I-405 N</b></span>
-    </div>
-    <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=32.793818%2C-117.248562&amp;destination=LAX&amp;travelmode=driving" target="_blank" rel="noopener">Open route to LAX</a>
-    <div class="grid2" style="margin-top:18px">
-      <div class="tip"><b>Best times to leave</b>On a weekday, leave before 6:30 AM or between 9:30 AM and 1:30 PM. Northbound I-5 / I-405 through Orange County is worst from 2:30 to 7 PM.</div>
-      <div class="tip"><b>Option A: Tue Nov 17, after dinner</b>Leave Gaslamp around 9 PM and reach LA around 11 PM. Roads are clear, but you need a place to stay in LA that night and should skip the last Airbnb night.</div>
-      <div class="tip"><b>Option B: Wed Nov 18, mid-morning</b>Check out, leave around 9:30 AM and reach LA around 11:45 AM. This is the most relaxed option.</div>
-      <div class="tip"><b>Scenic detour (+45–60 min)</b>Leave I-5 at Dana Point and take the Pacific Coast Highway through Laguna Beach and Crystal Cove for lunch with ocean views, then rejoin the I-405 at Irvine or Costa Mesa.</div>
-      <div class="tip"><b>If you are flying out</b>Plan to reach LAX 2–2.5 h before a domestic flight and 3 h before an international one. Add 30–45 min if you are returning a rental car.</div>
-      <div class="tip"><b>Rest stop</b>The Aliso Creek rest area on I-5 at Camp Pendleton is the easy halfway break.</div>
-    </div>
-  </section>
+    <section class="sec" id="checklist">
+      <h2>Before you go</h2>
+      <p class="sub">Ticks are saved on this device only. <span class="ck-progress" id="ck-progress" aria-live="polite"></span></p>
+      <ul class="check" id="check"></ul>
+    </section>
 
-  <section id="tips">
-    <h2>Good to know</h2>
-    <p class="sub">Things that matter on this route in mid-November.</p>
-    <div class="grid2" id="tipgrid"></div>
-  </section>
-
-  <section id="checklist">
-    <h2>Before you go</h2>
-    <p class="sub">Ticks are saved on this device only.</p>
-    <ul class="check" id="check"></ul>
-  </section>
+    <footer class="foot">
+      <p>Times are planning estimates. Check live traffic in Google Maps before each leg. Sunset times are approximate (PST). Opening hours can change, so confirm anything you book.</p>
+      <p class="ver" id="ver"></p>
+    </footer>
+  </main>
 </div>
-
-<footer><div class="wrap">Times are planning estimates. Check live traffic in Google Maps before each leg. Sunset times are approximate (PST). Opening hours can change, so confirm anything you book.</div></footer>
-
-<script>
-const ICON_CAR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11a2 2 0 0 1 2 2v4a1 1 0 0 1-1 1h-1a2 2 0 0 1-4 0H9a2 2 0 0 1-4 0H4a1 1 0 0 1-1-1v-4a2 2 0 0 1 2-2zm2.1 0h9.8l-1.1-3.4a.5.5 0 0 0-.5-.3H8.7a.5.5 0 0 0-.5.3zM7 15.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5zm10 0a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5z"/></svg>';
-const ICON_WALK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 13v-2a5 5 0 0 1-4.3-2.4l-1-1.6a2 2 0 0 0-2.5-.8L6 8.3V13h2V9.6z"/></svg>';
-
-const LA_HOME = '4432 153rd St, Lawndale, CA';
-const SD_HOME = '32.793818,-117.248562';
-const SD_HOME_LINK = 'https://maps.app.goo.gl/7ZGNaq2JdUnGEr1Y7';
-
-const DAYS = [
-{
-  id:'nov13', short:'Fri 13', label:'Arrival', date:'Friday, Nov 13', city:'Los Angeles', title:'Land & settle in',
-  sunset:'16:51',
-  summary:'Get to LA by 9 PM, go straight to the Lawndale Airbnb and get some sleep. Saturday starts early.',
-  stops:[
-    {name:'Arrive in LA',start:'21:00',end:'21:10',type:'logistics',q:'LAX',
-     desc:'This assumes you fly into LAX. If you are driving in, go straight to the Airbnb.',
-     tips:['If you are picking up a rental car, the shuttle and counter can take 30–45 min.']},
-    {name:'Check in: Lawndale Airbnb',start:'21:35',end:'21:50',type:'logistics',q:LA_HOME,
-     desc:'4432 153rd St, Unit 204, Lawndale. This is your base for the next 2 nights.',
-     tips:['Grab breakfast and snacks on the way. You leave at 7:30 AM tomorrow.','Buy your Universal parking online tonight if you have not already.']}
-  ],
-  legs:[
-    {mode:'drive',min:[15,25],mi:6,note:'I-405 S or Hawthorne Blvd south'}
-  ]
-},
-{
-  id:'nov14', short:'Sat 14', date:'Saturday, Nov 14', city:'Los Angeles', title:'Movie magic & the Pacific',
-  sunset:'16:50',
-  summary:'Universal while you are fresh and lines are short, airport pickup mid-afternoon, then Santa Monica Pier for sunset and the lights coming on.',
-  stops:[
-    {name:'Leave Lawndale Airbnb',start:'07:25',end:'07:30',type:'logistics',q:LA_HOME},
-    {name:'Universal Studios Hollywood',start:'08:15',end:'15:00',type:'park',q:'Universal Studios Hollywood',badges:[['booked','Tickets']],
-     desc:'Saturday is the busiest day of the week here. Be at the gates before they open.',
-     tips:['Go to Super Nintendo World (Mario Kart) or Harry Potter first, then take the escalators to the Lower Lot (Jurassic World, The Mummy, Transformers).','Do the Studio Tour around midday. It moves big crowds quickly.','On a Saturday an Express pass is the best money you can spend here.','Use the official app for live wait times and show schedules.']},
-    {name:'Pick up Rachana & Omkar at the airport',start:'15:50',end:'16:05',type:'logistics',q:'LAX Cell Phone Waiting Lot',
-     desc:'Times assume LAX. If they land at Burbank or Long Beach, swap the address and recheck the drive times.',
-     tips:['Wait at the airport\'s cell phone lot until they text "bags in hand". Looping the terminals can take 20+ minutes on weekends.','Track their flight number on the day.','At LAX, private-car pickup is at the Arrivals (lower level) curb.']},
-    {name:'Santa Monica Pier',start:'16:35',end:'18:15',type:'view',q:'Santa Monica Pier',badges:[['sunset','Sunset 4:50']],
-     desc:'Walk to the end of the pier for sunset over the water, then stay for the Pacific Park Ferris wheel lighting up.',
-     tips:['Get a photo at the Route 66 "End of the Trail" sign halfway down the pier.','Park in a downtown Santa Monica public garage. It costs less than the pier deck and is a 5–10 minute walk.','It gets cool by the water after dark, so bring a layer.']},
-    {name:'Dinner: Third Street Promenade or Main Street',start:'18:30',end:'20:00',type:'food',q:'Third Street Promenade Santa Monica',
-     desc:'The Promenade is 2 blocks from the pier and has every kind of food. Main Street is quieter and has better local spots.',
-     tips:['Make it an early night. Tomorrow you check out at 7:30 AM and end with a drive to San Diego.']},
-    {name:'Back to Lawndale Airbnb',start:'20:30',end:'20:40',type:'logistics',q:LA_HOME,
-     desc:'Pack tonight. Everything goes into the car tomorrow morning.'}
-  ],
-  legs:[
-    {mode:'drive',min:[40,55],mi:25,note:'I-405 N or I-110 N → US-101 N (light early on a Saturday)'},
-    {mode:'drive',min:[45,70],mi:22,note:'US-101 S → I-405 S. Leave by about 3:00 PM and adjust to their landing time.'},
-    {mode:'drive',min:[25,40],mi:11,note:'I-405 N → I-10 W, or surface streets via Lincoln Blvd'},
-    {mode:'walk',min:[5,8],mi:0.3,note:'Walk from the pier up to the Promenade'},
-    {mode:'drive',min:[25,35],mi:14,note:'I-405 S'}
-  ],
-  boxes:[
-    {kind:'info',title:'Venice Beach moved to tomorrow morning',items:['The Venice boardwalk goes quiet and sketchy after dark, and it is 0.4 mi from the Venice Canals. At 8 AM tomorrow you get both in soft light with no crowds.']},
-    {kind:'warn',title:'If you fall behind',items:['Flight lands early: skip Universal shows and leave the park sooner. With 45+ min to spare, drop their bags at the Lawndale Airbnb (15 min from LAX) before Santa Monica.','Flight delayed: go straight to dinner and walk the pier after dark. The lights are the best part anyway.']}
-  ]
-},
-{
-  id:'nov15', short:'Sun 15', date:'Sunday, Nov 15', city:'Los Angeles → San Diego', title:'The LA grand tour',
-  sunset:'16:49',
-  summary:'The big day. It runs west to east and back west so you never double back: beach at breakfast, downtown art, Beverly Hills, Griffith for sunset, Hollywood after dark, dinner, then south.',
-  stops:[
-    {name:'Check out: Lawndale Airbnb',start:'07:30',end:'07:35',type:'logistics',q:LA_HOME,
-     desc:'Load all the luggage into the trunk here, before you reach any stop.'},
-    {name:'Venice Canals',start:'08:00',end:'08:40',type:'walk',q:'Venice Canals Walkway',
-     desc:'Footbridges, little boats and quiet homes. It is at its most peaceful early on a Sunday.',
-     tips:['Park at the beach lot at the end of Venice Blvd. You can walk to both the canals and the boardwalk from there.','Best bridges for photos are along Dell Ave.']},
-    {name:'Venice Beach & Boardwalk',start:'08:45',end:'09:45',type:'walk',q:'Venice Beach Boardwalk',badges:[['moved','From Nov 14']],
-     desc:'Muscle Beach, the skatepark, murals and the VENICE sign at Windward Ave.',
-     tips:['At this hour the skatepark is full of locals and the boardwalk is calm.','Grab a coffee and pastry here as breakfast.']},
-    {name:'The Broad',start:'11:00',end:'12:15',type:'culture',q:'The Broad Los Angeles',badges:[['booked','11 AM slot']],
-     desc:'Free with a timed reservation. Book 11 AM: it leaves room for Venice and puts lunch at the right time.',
-     tips:['Kusama\'s Infinity Mirror Room needs its own same-day sign-up. Ask about it the moment you walk in.','Park in The Broad\'s own garage (entrance on 2nd St).','Optional 10 minutes: the free rooftop garden at Walt Disney Concert Hall across the street.']},
-    {name:'Grand Central Market (lunch)',start:'12:25',end:'13:05',type:'food',q:'Grand Central Market Los Angeles',badges:[['new','Added']],
-     desc:'LA\'s century-old food hall, 2 blocks from the bookstore. Everyone can pick something different.',
-     tips:['Get there on Angels Flight, the tiny 1901 funicular from Grand Ave down to Hill St. It is a one-minute ride and costs about a dollar.','Lines move fastest at the taco and Thai stalls. Eggslut always has a long line.']},
-    {name:'The Last Bookstore',start:'13:10',end:'13:50',type:'culture',q:'The Last Bookstore Los Angeles',
-     desc:'Go upstairs for the book tunnel and the labyrinth.',
-     tips:['Ride Angels Flight back up to Grand Ave to get back to the car without the steep walk.']},
-    {name:'Beverly Hills & Rodeo Drive',start:'14:30',end:'15:15',type:'walk',q:'Rodeo Drive Beverly Hills',
-     desc:'Treat this as a 45-minute photo stop: Via Rodeo\'s cobblestone steps, the Beverly Wilshire and the Beverly Hills sign at Beverly Gardens Park.',
-     tips:['Most Beverly Hills city garages give the first hour or so free.','Leave by 3:15. The drive up to Griffith gets slow near sunset.']},
-    {name:'Griffith Observatory + Hollywood Sign view',start:'16:00',end:'17:45',type:'view',q:'Griffith Observatory',badges:[['sunset','Sunset 4:49']],
-     desc:'The best free view in LA. The Hollywood Sign is right there from the terraces, so one stop covers both. Stay through blue hour (about 5:15) while the city lights come on.',
-     tips:['It is open late on Sundays and closed on Mondays, so today is the right day.','Weekend parking at the top fills by mid-afternoon. If it is full, drop everyone at the top and circle, or park lower on W Observatory Rd.','On clear nights the public telescopes on the lawn are free.','Car break-ins happen here. Leave nothing visible in the car.']},
-    {name:'Walk of Fame, TCL Chinese & Dolby Theatre',start:'18:05',end:'18:35',type:'walk',q:'TCL Chinese Theatre',
-     desc:'This settles your "14th or 17th?" question: none of them. The Dolby (home of the Oscars) and the Chinese Theatre forecourt handprints are on the same block as the Walk of Fame, so you see them here at no extra travel.',
-     tips:['Park in the Ovation Hollywood garage, where validation is cheap.','Costumed characters will ask for tips if you take photos with them. Keep an eye on bags.']},
-    {name:'Din Tai Fung',start:'19:00',end:'20:15',type:'food',q:'Din Tai Fung Westfield Century City',badges:[['booked','7:00 PM']],
-     desc:'Drive times assume the Century City location. If yours is Glendale, add about 15 min from Hollywood and swap the Urban Light leg to about 30 min.',
-     tips:['Order: Kurobuta pork xiao long bao, shrimp & pork spicy wontons, garlic string beans, and chocolate XLB for dessert.','Leave Hollywood by 6:35 to make 7:00.']},
-    {name:'Urban Light at LACMA',start:'20:30',end:'20:50',type:'view',q:'Urban Light LACMA',
-     desc:'202 restored street lamps, lit from dusk to dawn. It is free and best after dark.',
-     tips:['Street parking along 6th St behind the museum is easy at night.']},
-    {name:'Check in: Pacific Beach Airbnb',start:'23:00',end:'23:20',type:'logistics',q:SD_HOME,link:SD_HOME_LINK,
-     desc:'Check in, then sleep. Tomorrow starts at a relaxed 8:15.',
-     tips:['Confirm with the host that self check-in works around 11 PM.']}
-  ],
-  legs:[
-    {mode:'drive',min:[20,25],mi:10,note:'I-405 N → Lincoln Blvd'},
-    {mode:'walk',min:[8,10],mi:0.4,note:'Canals → boardwalk'},
-    {mode:'drive',min:[35,50],mi:16,note:'I-10 E to Downtown'},
-    {mode:'walk',min:[8,12],mi:0.4,note:'Walk downhill or ride Angels Flight'},
-    {mode:'walk',min:[3,5],mi:0.2,note:'2 blocks on Spring St'},
-    {mode:'drive',min:[30,40],mi:12,note:'Walk 10 min to the car, then Wilshire Blvd or I-10 W → La Cienega'},
-    {mode:'drive',min:[35,55],mi:10,note:'Most of the delay is the last mile up the hill at sunset'},
-    {mode:'drive',min:[15,25],mi:5,note:'Los Feliz Blvd → Franklin Ave'},
-    {mode:'drive',min:[20,30],mi:8,note:'Santa Monica Blvd west'},
-    {mode:'drive',min:[10,15],mi:3,note:'Olympic Blvd / Wilshire Blvd east'},
-    {mode:'drive',min:[125,145],mi:115,note:'I-405 S → I-5 S → exit Garnet Ave. Fill up before you leave and switch drivers at the Aliso Creek rest area (Camp Pendleton).'}
-  ],
-  boxes:[
-    {kind:'warn',title:'Luggage is in the car all day',items:['Everything goes in the trunk at the Airbnb, and nothing stays on the seats. Never open the trunk at a stop.','Use staffed or busy garages where you can: The Broad garage, Beverly Hills city garages, Ovation Hollywood and Westfield Century City.','At Griffith, the riskiest stop, consider having one person stay with the car if you have to park far down the hill.']},
-    {kind:'warn',title:'If you fall behind (cut in this order)',items:['Late before lunch: skip Grand Central Market and eat near the bookstore.','Late after downtown: skip Rodeo Drive. Griffith at sunset is the one stop you should protect.','Tired after dinner: skip Urban Light. A rested driver for the 2-hour night drive matters more than one more photo.']}
-  ]
-},
-{
-  id:'nov16', short:'Mon 16', date:'Monday, Nov 16', city:'San Diego', title:'Coast, north to south',
-  sunset:'16:46',
-  summary:'One sweep down the coast: canyon trail, Torrey Pines bluffs, Scripps Pier, La Jolla\'s sea lions and caves, then Sunset Cliffs for sunset. It is a Monday, so trails and parking will be quieter.',
-  stops:[
-    {name:'Leave Pacific Beach Airbnb',start:'08:15',end:'08:20',type:'logistics',q:SD_HOME,link:SD_HOME_LINK},
-    {name:'Annie\'s Canyon Trail',start:'08:45',end:'09:45',type:'walk',q:'Annie\'s Canyon Trail Solana Beach',
-     desc:'You had a trail on the 16th or 17th. Do it today: it is the northern end of this coast sweep. It is a 1.5 mi loop with a narrow sandstone slot canyon and a short ladder.',
-     tips:['Free street parking on N Rios Ave, Solana Beach.','There is a steep, narrow route and an easy route. Pick based on the group.','Wear shoes with grip. Skip the slot section if it has rained.']},
-    {name:'Torrey Pines Reserve & Beach',start:'10:00',end:'11:45',type:'walk',q:'Torrey Pines State Natural Reserve',badges:[['new','From your extras']],
-     desc:'This fits right between Annie\'s and La Jolla. Take the Razor Point → Beach Trail down to Flat Rock on Torrey Pines Beach (about 2 mi round trip).',
-     tips:['Park in the paid beach lot at the bottom.','No food is allowed in the reserve (only on the beach).','For the easiest option, do the 0.7 mi Guy Fleming loop instead.']},
-    {name:'Scripps Coastal Meander & Scripps Pier',start:'12:00',end:'12:40',type:'walk',q:'Scripps Pier La Jolla',
-     desc:'The classic shot is from underneath the pier, looking down its pilings. You need a lowish tide to walk under it from La Jolla Shores beach.',
-     tips:['Park near Kellogg Park / La Jolla Shores.']},
-    {name:'Lunch in La Jolla',start:'12:45',end:'13:40',type:'food',q:'La Jolla Shores',
-     desc:'Galaxy Taco (Shores) for something casual, El Pescador (Village) for fish, or Brockton Villa if you want ocean views over the cove.'},
-    {name:'La Jolla Cove & Sunny Jim Sea Cave',start:'13:50',end:'15:30',type:'view',q:'Sunny Jim Sea Cave La Jolla',
-     desc:'Sea lions at Point La Jolla, harbor seals at Children\'s Pool, and the 145 tunnel steps down into Sunny Jim Cave through The Cave Store (small entry fee).',
-     tips:['Parking is the hardest in San Diego here. Allow 10–15 min to find a spot or use a garage on Prospect St.','The sea lions smell strong. You get used to it.','Keep the legal distance from the animals and stay behind the ropes.']},
-    {name:'Sunset Cliffs, caves & Big Blowhole',start:'16:00',end:'17:15',type:'view',q:'Sunset Cliffs Natural Park',badges:[['sunset','Sunset 4:46']],
-     desc:'The best sunset spot in San Diego. The sea caves and hidden arch are only reachable at low tide. The blowhole performs best with a decent swell.',
-     tips:['Check the La Jolla tide chart for today. If low tide is near 4–5 PM, you are in luck.','The beach stairs at Ladera St are the safe way down.']},
-    {name:'Pacific Beach Boardwalk & Crystal Pier',start:'17:45',end:'19:30',type:'food',q:'Crystal Pier Pacific Beach',
-     desc:'Your "if we\'re tired" evening, used tonight because it is in your Airbnb\'s neighborhood. Drop the car at home and walk about 12 min: a boardwalk stroll, Crystal Pier\'s lit cottages, and tacos (try Oscar\'s Mexican Seafood).',
-     tips:['If you have more energy, swap tonight with tomorrow and do Gaslamp tonight instead.']}
-  ],
-  legs:[
-    {mode:'drive',min:[20,25],mi:17,note:'I-5 N → Lomas Santa Fe Dr'},
-    {mode:'drive',min:[10,15],mi:6,note:'Hwy 101 south along the coast'},
-    {mode:'drive',min:[10,15],mi:4,note:'N Torrey Pines Rd → La Jolla Shores Dr'},
-    {mode:'walk',min:[5,10],mi:0.4,note:'Walk or short drive'},
-    {mode:'drive',min:[10,20],mi:2,note:'Includes the parking hunt'},
-    {mode:'drive',min:[25,35],mi:13,note:'I-5 S → I-8 W → Sunset Cliffs Blvd'},
-    {mode:'drive',min:[15,20],mi:7,note:'Ingraham St north to the Airbnb, then walk about 0.6 mi to the boardwalk'}
-  ],
-  boxes:[
-    {kind:'warn',title:'Sunset Cliffs safety',items:['The sandstone cliffs crumble without warning. Stay back from the edges, and never climb down outside the marked stairs.','Go into the caves only on a falling or low tide, and get out before dark. The tide comes in fast.']},
-    {kind:'warn',title:'If you fall behind',items:['Shorten Torrey Pines to the Guy Fleming loop (30 min).','Skip Scripps Pier if the tide is high. You cannot get the under-pier shot anyway.']}
-  ]
-},
-{
-  id:'nov17', short:'Tue 17', date:'Tuesday, Nov 17', city:'San Diego', title:'Point Loma, parks & the bay',
-  sunset:'16:46',
-  summary:'Lighthouse views in the morning, history and gardens midday, Coronado for sunset, then the skyline and downtown at night.',
-  stops:[
-    {name:'Leave Pacific Beach Airbnb',start:'08:25',end:'08:30',type:'logistics',q:SD_HOME,link:SD_HOME_LINK},
-    {name:'Cabrillo National Monument',start:'09:00',end:'10:45',type:'view',q:'Cabrillo National Monument',
-     desc:'Opens at 9. You get a full-circle view of the bay, the downtown skyline and Coronado, plus the 1855 Old Point Loma Lighthouse.',
-     tips:['There is a per-vehicle entry fee. An America the Beautiful pass covers it.','The Bayside Trail (2 mi round trip) is an easy, beautiful walk.','The tide pools are on the west side, have their own lot, and are only worth it at low tide.']},
-    {name:'Old Town & Heritage Park (lunch)',start:'11:10',end:'12:50',type:'culture',q:'Old Town San Diego State Historic Park',
-     desc:'Old Town is the free historic plaza where San Diego began. Heritage County Park is a street of seven restored Victorian houses, a 3-minute walk away.',
-     tips:['For lunch, Old Town Mexican Café makes fresh tortillas in the window.']},
-    {name:'Balboa Park & Spanish Village Art Center',start:'13:05',end:'15:00',type:'culture',q:'Spanish Village Art Center Balboa Park',
-     desc:'Walk El Prado, see the Botanical Building and Lily Pond and the California Tower, and visit the colorful artist studios at Spanish Village (open daytime only).',
-     tips:['The central lots are paid. The Inspiration Point lot plus the free tram is cheaper.','Today is a Tuesday, which works better than a Monday for Balboa Park.']},
-    {name:'Spruce Street Suspension Bridge',start:'15:10',end:'15:30',type:'walk',q:'Spruce Street Suspension Bridge',badges:[['new','From your extras']],
-     desc:'A 1912 footbridge that sways as you walk it, hidden in a canyon in Bankers Hill. It is 5 minutes from Balboa Park, so it is a quick add here.',
-     tips:['Street parking on Spruce St near Front St.']},
-    {name:'Coronado Beach',start:'15:50',end:'17:00',type:'view',q:'Coronado Beach Hotel del Coronado',badges:[['sunset','Sunset 4:46']],
-     desc:'Gold-flecked sand, the red-roofed Hotel del Coronado, and a wide beach facing west for sunset.',
-     tips:['The Coronado Bridge drive over is a view in itself, so have someone ready with a camera.']},
-    {name:'Centennial Park (skyline)',start:'17:10',end:'17:45',type:'view',q:'Centennial Park Coronado',badges:[['moved','From Nov 16']],
-     desc:'Moved here because it is in Coronado, next to the Ferry Landing. Blue hour gives you the downtown skyline lit up across the water.'},
-    {name:'Seaport Village & Gaslamp Quarter',start:'18:05',end:'21:00',type:'food',q:'Gaslamp Quarter San Diego',
-     desc:'Stroll the waterfront shops at Seaport Village, then walk about 15 min to Gaslamp\'s 5th Ave for dinner and the trip\'s last night out.',
-     tips:['Park once near Seaport Village and walk.','If you drive back to LA tonight, see the Return section below.']},
-    {name:'Back to Pacific Beach Airbnb',start:'21:20',end:'21:30',type:'logistics',q:SD_HOME,link:SD_HOME_LINK}
-  ],
-  legs:[
-    {mode:'drive',min:[25,30],mi:11,note:'Ingraham St → Nimitz Blvd → Catalina Blvd'},
-    {mode:'drive',min:[20,25],mi:9,note:'Catalina Blvd → Rosecrans St'},
-    {mode:'drive',min:[12,15],mi:4,note:'I-5 S → Hwy 163 N'},
-    {mode:'drive',min:[5,10],mi:1.5,note:'Through Bankers Hill'},
-    {mode:'drive',min:[15,20],mi:6,note:'I-5 S → Coronado Bridge'},
-    {mode:'drive',min:[5,8],mi:2,note:'Orange Ave to the Ferry Landing'},
-    {mode:'drive',min:[15,20],mi:6,note:'Back over the bridge to Harbor Dr'},
-    {mode:'drive',min:[15,20],mi:9,note:'I-5 N → Grand Ave'}
-  ],
-  boxes:[
-    {kind:'info',title:'Heading back to LA',items:['The return date is not set yet. The Return section below has the best departure windows and both options (tonight or the next morning).']},
-    {kind:'warn',title:'If you fall behind',items:['Skip the Cabrillo Bayside Trail and just do the lighthouse and viewpoint (45 min).','Do the Spruce St bridge only if you are on schedule. It is the easiest stop to drop.']}
-  ]
-}
-];
-
-const CHANGES = [
-  ['Venice Beach → Day 2 morning','It is 0.4 mi from the Canals. The boardwalk is great at 9 AM and not worth it after dark.'],
-  ['Santa Monica timed for sunset','Sunset is about 4:50 PM. Arriving around 4:35 gets you the sunset and then the pier lights.'],
-  ['Day 2 reordered by geography','Venice → Downtown → Beverly Hills → Griffith → Hollywood → dinner. No backtracking across LA.'],
-  ['Hollywood Sign + Griffith = one stop','The observatory terraces have a clear sign view at sunset, which saves a separate 45-min detour.'],
-  ['Dolby & Chinese Theatre → Day 2','Same block as the Walk of Fame. On the 17th you are 2+ hours away in San Diego.'],
-  ['Lunch added at Grand Central Market','It sits between The Broad and the bookstore, and Angels Flight connects them.'],
-  ['Trail day = Nov 16','Annie\'s Canyon and Torrey Pines open the north-to-south coast run, so there is no extra driving.'],
-  ['Centennial Park → Coronado evening','It is in Coronado, so it pairs naturally with Coronado Beach at blue hour.'],
-  ['Pacific Beach on 16th, Gaslamp on 17th','Your Airbnb is in Pacific Beach, so the 16th is a walk from home after the long Sunday. The big downtown night comes last.'],
-  ['Spruce St Bridge with Balboa Park','They are 5 minutes apart, so it is an easy 20-minute add.']
-];
-
-const TIPS = [
-  ['Sunset ≈ 4:50 PM, dark by 5:20','Daylight is the scarcest thing on this trip. Every day puts the outdoor stops before sunset and the city stops after.'],
-  ['Use carpool lanes','With 4 people you qualify for HOV lanes on the 405 and 5. Avoid "Express Lanes" unless you have a FasTrak transponder.'],
-  ['Leave nothing visible in the car','Break-ins are common at Griffith, La Jolla Cove and Sunset Cliffs. Put bags in the trunk before you arrive, not after you park.'],
-  ['Weather','Days around 68–72°F, evenings in the mid-50s by the water, ocean about 63°F. Bring a light jacket every day.'],
-  ['Tides matter in San Diego','Sea caves, under-pier photos and tide pools all need low tide. In winter the lowest tides tend to fall in the afternoon.'],
-  ['Parking apps','Most meters in LA and San Diego take ParkMobile or the city app. Set it up before the trip.']
-];
-
-const CHECKLIST = [
-  'Universal tickets for Sat Nov 14 (consider Express on a Saturday)',
-  'The Broad: free timed reservation, Sun Nov 15 at 11 AM, for everyone',
-  'Din Tai Fung 7 PM: confirm the location and headcount including Omkar & Rachana',
-  'Get Rachana & Omkar\'s flight number and arrival airport, and track it on the 14th',
-  'Lawndale Airbnb: confirm check-in after 9 PM on Nov 13 and the checkout time on Nov 15',
-  'Pacific Beach Airbnb: confirm self check-in around 11 PM on Sun Nov 15',
-  'Decide the return date and time to LA (book a place in LA if you go back on the night of the 17th)',
-  'Check the La Jolla tide chart for Nov 16–17',
-  'Download offline Google Maps areas for LA and San Diego',
-  'Bring an America the Beautiful pass if you have one (Cabrillo)',
-  'Pack grippy shoes for Annie\'s Canyon and Sunset Cliffs, plus layers for evenings',
-  'Set up the ParkMobile app with a card'
-];
-
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const toMin = t => { const [h,m] = t.split(':').map(Number); return h*60+m; };
-const fmt = m => { const h=Math.floor(m/60)%24, mm=m%60, ap=h>=12?'PM':'AM', h12=((h+11)%12)+1; return `${h12}:${String(mm).padStart(2,'0')} ${ap}`; };
-const fmtDur = m => m>=60 ? `${Math.floor(m/60)}h${m%60?` ${m%60}m`:''}` : `${m} min`;
-const mapsUrl = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
-const MAX_WAYPOINTS = 9;
-
-function routeUrl(day){
-  const qs = day.stops.map(s => s.q);
-  const mid = qs.slice(1,-1).slice(0,MAX_WAYPOINTS);
-  const p = new URLSearchParams({api:'1',origin:qs[0],destination:qs[qs.length-1],travelmode:'driving'});
-  if (mid.length) p.set('waypoints', mid.join('|'));
-  return `https://www.google.com/maps/dir/?${p.toString()}`;
-}
-
-function driveTotals(day){
-  return day.legs.filter(l => l.mode==='drive').reduce((a,l) => ({lo:a.lo+l.min[0], hi:a.hi+l.min[1], mi:a.mi+l.mi}), {lo:0,hi:0,mi:0});
-}
-
-function renderBar(day){
-  const s = toMin(day.stops[0].start), e = toMin(day.stops[day.stops.length-1].end), span = e - s;
-  const pct = m => ((m - s) / span * 100).toFixed(2);
-  const segs = day.stops.map((st,i) => {
-    const a = toMin(st.start), b = toMin(st.end);
-    const block = `<div class="seg t-${st.type}" style="left:${pct(a)}%;width:${((b-a)/span*100).toFixed(2)}%" title="${esc(st.name)} · ${fmt(a)}–${fmt(b)}"></div>`;
-    const next = day.stops[i+1];
-    if (!next || toMin(next.start) <= b) return block;
-    const n = toMin(next.start);
-    return block + `<div class="seg travel" style="left:${pct(b)}%;width:${((n-b)/span*100).toFixed(2)}%" title="Travel + parking · ${fmtDur(n-b)}"></div>`;
-  }).join('');
-  const sun = toMin(day.sunset);
-  const hasSun = sun > s && sun < e;
-  const ticks = [];
-  for (let h = Math.ceil(s/60); h*60 <= e; h++) {
-    if (h % 2) continue;
-    const p = Number(pct(h*60));
-    if ((hasSun && Math.abs(h*60 - sun) < 50) || p < 4 || p > 96) continue;
-    ticks.push(`<span style="left:${p}%">${fmt(h*60).replace(':00','')}</span>`);
-  }
-  if (hasSun) ticks.push(`<span class="sun" style="left:${pct(sun)}%">☀ ${fmt(sun)}</span>`);
-  const sunLine = hasSun ? `<div class="sunset" style="left:${pct(sun)}%"></div>` : '';
-  return `<div class="bar" aria-label="Day timeline from ${fmt(s)} to ${fmt(e)}">
-    <div class="track">${segs}${sunLine}</div>
-    <div class="ticks">${ticks.join('')}</div>
-    <div class="legend"><span><i class="t-park"></i>Explore</span><span><i class="t-food"></i>Food / evening</span><span><i class="t-view"></i>Views & sunset</span><span><i class="t-logistics"></i>Logistics</span><span><i class="seg travel" style="position:static;display:inline-block"></i>Travel + parking</span></div>
-  </div>`;
-}
-
-function renderStop(st){
-  const badges = (st.badges||[]).map(([k,t]) => `<span class="badge ${k}">${esc(t)}</span>`).join('');
-  const tips = st.tips ? `<ul>${st.tips.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : '';
-  return `<li class="stop t-${st.type}">
-    <div class="time">${fmt(toMin(st.start))}<span>to ${fmt(toMin(st.end))}</span></div>
-    <div class="card"><h3>${esc(st.name)} ${badges}</h3>${st.desc?`<p>${esc(st.desc)}</p>`:''}${tips}
-    <a class="maps" href="${st.link || mapsUrl(st.q)}" target="_blank" rel="noopener">Open in Maps ↗</a></div>
-  </li>`;
-}
-
-function renderLeg(l){
-  const ico = l.mode === 'drive' ? ICON_CAR : ICON_WALK;
-  const t = l.min[0] === l.min[1] ? `${l.min[0]} min` : `${fmtDur(l.min[0])}–${fmtDur(l.min[1])}`;
-  return `<li class="leg"><div></div><div><span>${ico}<b>${t}</b> · ${l.mi} mi</span><span>${esc(l.note)}</span></div></li>`;
-}
-
-function renderDay(day, idx){
-  const d = driveTotals(day);
-  const items = day.stops.map((st,i) => renderStop(st) + (day.legs[i] ? renderLeg(day.legs[i]) : '')).join('');
-  const boxes = (day.boxes||[]).map(b => `<div class="box ${b.kind==='warn'?'warn':''}"><h3>${esc(b.title)}</h3><ul>${b.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`).join('');
-  return `<section class="day" id="${day.id}">
-    <div class="dayhead"><div><div class="when">${esc(day.label || `Day ${idx}`)} · ${esc(day.date)}</div><h2>${esc(day.title)}</h2></div></div>
-    <p class="sub" style="margin-top:8px">${esc(day.summary)}</p>
-    <div class="chips">
-      <span class="chip">📍 <b>${esc(day.city)}</b></span>
-      <span class="chip">🚗 <b>${fmtDur(d.lo)}–${fmtDur(d.hi)}</b> · ${Math.round(d.mi)} mi</span>
-      <span class="chip">🌅 Sunset <b>~${fmt(toMin(day.sunset))}</b></span>
-      <span class="chip">⏱ <b>${fmt(toMin(day.stops[0].start))}</b> to <b>${fmt(toMin(day.stops[day.stops.length-1].end))}</b></span>
-    </div>
-    <a class="routebtn" href="${routeUrl(day)}" target="_blank" rel="noopener">${ICON_CAR.replace('<svg','<svg style="width:16px;height:16px;fill:#fff"')} Open full day route</a>
-    ${renderBar(day)}
-    <ol class="tl">${items}</ol>
-    ${boxes}
-  </section>`;
-}
-
-function renderOverview(){
-  const totals = DAYS.map(driveTotals);
-  const maxHi = Math.max(...totals.map(t => t.hi));
-  document.getElementById('ov').innerHTML = DAYS.map((d,i) => {
-    const t = totals[i];
-    return `<a href="#${d.id}"><div class="d">${esc(d.short.split(' ')[0])}<small>Nov ${esc(d.short.split(' ')[1])}</small></div>
-      <div><div class="t">${esc(d.title)}</div>
-      <div class="m">${esc(d.city)} · ${d.stops.length} stops · ${fmtDur(t.lo)}–${fmtDur(t.hi)} driving</div>
-      <div class="drivebar"><i class="hi" style="width:${t.hi/maxHi*100}%"></i><i class="lo" style="width:${t.lo/maxHi*100}%"></i></div></div></a>`;
-  }).join('');
-  const all = totals.reduce((a,t) => ({lo:a.lo+t.lo, hi:a.hi+t.hi, mi:a.mi+t.mi}), {lo:0,hi:0,mi:0});
-  const stops = DAYS.reduce((n,d) => n + d.stops.filter(s => s.type !== 'logistics').length, 0);
-  document.getElementById('stats').innerHTML = [
-    [`${stops}`,'places to see'],
-    [`${Math.round(all.lo/60)}–${Math.round(all.hi/60)} h`,'total driving'],
-    [`${Math.round(all.mi)} mi`,'on the road'],
-    ['4 sunsets','planned around']
-  ].map(([b,s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
-}
-
-function renderChecklist(){
-  const KEY = 'socal-checklist-v1';
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
-  const el = document.getElementById('check');
-  el.innerHTML = CHECKLIST.map((t,i) => `<li><label><input type="checkbox" data-i="${i}" ${saved[i]?'checked':''}><span>${esc(t)}</span></label></li>`).join('');
-  el.addEventListener('change', e => {
-    const i = e.target.dataset.i;
-    if (i === undefined) return;
-    saved = {...saved, [i]: e.target.checked};
-    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (err) { /* storage unavailable: ticks just won't persist */ }
-  });
-}
-
-function renderNav(){
-  const links = [['stays','Stays'], ['overview','Overview'], ...DAYS.map(d => [d.id, d.short]), ['return','Return'], ['tips','Tips'], ['checklist','Checklist']];
-  document.getElementById('nav').innerHTML = links.map(([id,l]) => `<a href="#${id}" data-id="${id}">${l}</a>`).join('') + '<button id="theme" type="button" aria-label="Toggle dark mode">◐ Theme</button>';
-  document.getElementById('theme').addEventListener('click', () => {
-    const root = document.documentElement;
-    const isDark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = isDark ? 'light' : 'dark';
-    try { localStorage.setItem('socal-theme', root.dataset.theme); } catch (e) { /* ignore */ }
-  });
-  const obs = new IntersectionObserver(entries => entries.forEach(en => {
-    if (!en.isIntersecting) return;
-    document.querySelectorAll('nav a').forEach(a => a.classList.toggle('on', a.dataset.id === en.target.id));
-  }), {rootMargin:'-40% 0px -55% 0px'});
-  links.forEach(([id]) => { const s = document.getElementById(id); if (s) obs.observe(s); });
-}
-
-try { const t = localStorage.getItem('socal-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) { /* ignore */ }
-document.getElementById('days').innerHTML = DAYS.map(renderDay).join('');
-document.getElementById('chg').innerHTML = CHANGES.map(([b,t]) => `<div class="chg"><b>${esc(b)}</b>${esc(t)}</div>`).join('');
-document.getElementById('tipgrid').innerHTML = TIPS.map(([b,t]) => `<div class="tip"><b>${esc(b)}</b>${esc(t)}</div>`).join('');
-renderOverview();
-renderChecklist();
-renderNav();
-</script>
+<script>if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){})})}</script>
 </body>
 </html>
